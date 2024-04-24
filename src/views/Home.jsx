@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react"
 import categoriesController from "../controllers/categoriesController"
 import { Link } from "react-router-dom"
+import UserView from "../components/UserView"
+import Categories from "./Categories"
+import UsersData from "./UsersData"
+
 
 export default function Home() {
 
@@ -16,7 +20,8 @@ export default function Home() {
     useEffect(() => { getCategories() }, [])
 
     return (
-        <div className="flex flex-wrap w-full gap-5 mx-auto mt-10 justify-center">
+        <div className="flex flex-wrap w-full h-full gap-5 mx-auto mt-[40px] justify-center">
+            <UserView />
             {
                 categories.map(category => <Link key={category._id}
                     to={`/category?id=${category._id}`}
@@ -31,7 +36,10 @@ export default function Home() {
                     </h3>
                 </Link>)
             }
-
+            <div className="w-full flex flex-col gap-3 justify-center">
+                <Categories />
+                <UsersData />
+            </div>
         </div>
     )
 }

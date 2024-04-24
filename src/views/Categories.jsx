@@ -1,5 +1,8 @@
 export default function Categories() {
   return (
-    <div>Categories</div>
+    <div>
+      <h1 className="text-lg"> Categories</h1>
+
+    </div>
   )
 }

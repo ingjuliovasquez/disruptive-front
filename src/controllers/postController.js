@@ -1,10 +1,10 @@
 import axios from "./axiosInstance";
 const urlBase = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000/api";
-const urlCategory = "categories"
+const urlPost = "post"
 
-async function getCategory(id) {
+async function getPost(id) {
     try {
-        const { data } = await axios.get(`${urlBase}/${urlCategory}/${id}`)
+        const { data } = await axios.get(`${urlBase}/${urlPost}/${id}`)
         return data;
     }
     catch (error) {
@@ -12,7 +12,7 @@ async function getCategory(id) {
     }
 }
 
-async function getCategories() {
+async function getPosts() {
     try {
         const { data } = await axios.get(urlBase)
         return data;
@@ -22,7 +22,7 @@ async function getCategories() {
     }
 }
 
-async function createCategory(payload) {
+async function createPost(payload) {
     try {
         const { data } = await axios.post(urlBase, payload)
         return data;
@@ -32,7 +32,7 @@ async function createCategory(payload) {
     }
 }
 
-async function updateCategory(id, payload) {
+async function updatePost(id, payload) {
     try {
         const { data } = await axios.put(`${urlBase}/${id}`, payload)
         console.log(data)
@@ -44,7 +44,7 @@ async function updateCategory(id, payload) {
 
 }
 
-async function deleteCategory(id) {
+async function deletePost(id) {
     try {
         const { status } = await axios.delete(`${urlBase}/${id}`)
         return status;
@@ -55,9 +55,9 @@ async function deleteCategory(id) {
 }
 
 export default {
-    getCategory,
-    getCategories,
-    createCategory,
-    updateCategory,
-    deleteCategory
+    getPost,
+    getPosts,
+    createPost,
+    updatePost,
+    deletePost
 }

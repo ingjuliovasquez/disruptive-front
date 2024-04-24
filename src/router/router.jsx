@@ -22,6 +22,7 @@ export default function Router() {
                     element: <AppLayout />,
                     children: [
                         { path: "/", element: <Home /> },
+                        { path: "/home", element: <Home />},
                         { path: "/create-category", element: <CreateCategory /> },
                         { path: "/create-post", element: <CreatePost /> }
                     ]

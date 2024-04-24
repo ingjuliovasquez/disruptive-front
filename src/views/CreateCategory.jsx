@@ -17,7 +17,8 @@ export default function CreateCategory() {
     category: "",
     permissions: {
       addVideo: false,
-      addImage: false
+      addImage: false,
+      addText: false
     }
   })
 
@@ -93,6 +94,16 @@ export default function CreateCategory() {
               ...formData,
               permissions: {
                 ...formData.permissions, addVideo: e.target.checked
+              }
+            })}
+          />
+                    <Toggle
+            label="Archivo de texto"
+            value={formData.permissions.addText}
+            onChange={e => setFormData({
+              ...formData,
+              permissions: {
+                ...formData.permissions, addText: e.target.checked
               }
             })}
           />
