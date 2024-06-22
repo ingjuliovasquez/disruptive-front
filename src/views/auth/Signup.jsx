@@ -15,7 +15,7 @@ export default function Signup() {
     const setUserState = useSetRecoilState(userState)
 
     const [userForm, setUserForm] = useState({
-        email: "", password: "", confirmPassword: "", username: "",
+        email: "", password: "", confirmPassword: "", username: "", type: ""
     })
 
     const [errors, setErrors] = useState([])
@@ -100,6 +100,11 @@ export default function Signup() {
                     required
                     error={errors.includes("confirmPassword")}
                 />
+                <label className="block mb-0 text-sm font-medium text-gray-900"> Tipo </label>
+                <select id="type" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                    <option value="reader">Lector</option>
+                    <option value="publisher">Creador</option>
+                </select>
                 <div className="flex flex-col mt-3 w-full items-center gap-4" >
                     <Button type="submit">
                         Registrarse

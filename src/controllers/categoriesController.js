@@ -1,10 +1,10 @@
-import axios from "../config/axiosInstance";
-
-const urlBase = "/categories"
+import axios from "./axiosInstance";
+const urlBase = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000/api";
+const urlCategory = "categories"
 
 async function getCategory(id) {
     try {
-        const { data } = await axios.get(`${urlBase}/${id}`)
+        const { data } = await axios.get(`${urlBase}/${urlCategory}/${id}`)
         return data;
     }
     catch (error) {
@@ -46,7 +46,7 @@ async function updateCategory(id, payload) {
 
 async function deleteCategory(id) {
     try {
-        const { status } = await axios.del(`${urlBase}/${id}`)
+        const { status } = await axios.delete(`${urlBase}/${id}`)
         return status;
     }
     catch (err) {
