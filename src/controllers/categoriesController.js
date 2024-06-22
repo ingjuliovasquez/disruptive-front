@@ -1,4 +1,4 @@
-import axios from "./axiosInstance";
+import axios from "../config/axiosInstance";
 
 const urlBase = "/categories"
 
@@ -46,7 +46,7 @@ async function updateCategory(id, payload) {
 
 async function deleteCategory(id) {
     try {
-        const { status } = await axios.delete(`${urlBase}/${id}`)
+        const { status } = await axios.del(`${urlBase}/${id}`)
         return status;
     }
     catch (err) {
