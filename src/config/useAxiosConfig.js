@@ -6,8 +6,8 @@ import userState from '../recoil/userState';
 
 const useAxiosConfig = () => {
   const user = useRecoilValue(userState);
-
-  useEffect(() => {
+  
+  useEffect(() => {    
     const requestInterceptor = axios.instance.interceptors.request.use(
       (config) => {
         if (user) {

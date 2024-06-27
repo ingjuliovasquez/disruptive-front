@@ -1,10 +1,10 @@
-import axios from "./axiosInstance";
+import axios from "../config/axiosInstance";
 const urlBase = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000/api";
-const urlCategory = "categories"
+const urlCategory = urlBase + "/categories"
 
 async function getCategory(id) {
     try {
-        const { data } = await axios.get(`${urlBase}/${urlCategory}/${id}`)
+        const { data } = await axios.get(`${urlCategory}/${id}`)
         return data;
     }
     catch (error) {
@@ -14,7 +14,7 @@ async function getCategory(id) {
 
 async function getCategories() {
     try {
-        const { data } = await axios.get(urlBase)
+        const { data } = await axios.get(urlCategory)
         return data;
     }
     catch (err) {
@@ -24,7 +24,7 @@ async function getCategories() {
 
 async function createCategory(payload) {
     try {
-        const { data } = await axios.post(urlBase, payload)
+        const { data } = await axios.post(urlCategory, payload)
         return data;
     }
     catch (error) {
@@ -34,7 +34,7 @@ async function createCategory(payload) {
 
 async function updateCategory(id, payload) {
     try {
-        const { data } = await axios.put(`${urlBase}/${id}`, payload)
+        const { data } = await axios.put(`${urlCategory}/${id}`, payload)
         console.log(data)
         return data;
     }
@@ -46,7 +46,7 @@ async function updateCategory(id, payload) {
 
 async function deleteCategory(id) {
     try {
-        const { status } = await axios.delete(`${urlBase}/${id}`)
+        const { status } = await axios.delete(`${urlCategory}/${id}`)
         return status;
     }
     catch (err) {

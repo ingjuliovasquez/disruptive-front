@@ -24,19 +24,15 @@ export default function NavBar() {
                 <h2 className="font-bold text-xl" >Disruptive</h2>
                 <nav className="flex gap-2">
                     {
-                        !user
-                            ? <>
+                        user
+                            ? <button onClick={logout}
+                                className={btnClass}
+                            >
+                                Cerrar sesión
+                            </button>
+                            : <>
                                 <NavLink to="/login">Iniciar sesión</NavLink>
                                 <NavLink to="/signup">Registrarse</NavLink>
-                            </>
-                            : <>
-                                {(user.role === "admin" || user.role === "publisher") && <NavLink to="/create-post">Crear post</NavLink>}
-                                {user.role === "admin" && <NavLink to="/create-category">Crear categoría</NavLink>}
-                                <button onClick={logout}
-                                    className={btnClass}
-                                >
-                                    Cerrar sesión
-                                </button>
                             </>
                     }
                 </nav>

@@ -6,11 +6,6 @@ const instance = axios.create({
   baseURL: url
 });
 
-
-
-
-
-
 async function get(url) {
   return await instance.get(url);
 }

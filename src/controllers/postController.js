@@ -1,10 +1,10 @@
-import axios from "./axiosInstance";
+import axios from "../config/axiosInstance";
 const urlBase = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000/api";
-const urlPost = "post"
+const urlPost = urlBase + "/posts"
 
 async function getPost(id) {
     try {
-        const { data } = await axios.get(`${urlBase}/${urlPost}/${id}`)
+        const { data } = await axios.get(`${urlPost}/${id}`)
         return data;
     }
     catch (error) {
@@ -14,7 +14,7 @@ async function getPost(id) {
 
 async function getPosts() {
     try {
-        const { data } = await axios.get(urlBase)
+        const { data } = await axios.get(`${urlPost}`)
         return data;
     }
     catch (err) {
@@ -24,7 +24,7 @@ async function getPosts() {
 
 async function createPost(payload) {
     try {
-        const { data } = await axios.post(urlBase, payload)
+        const { data } = await axios.post(urlPost, payload)
         return data;
     }
     catch (error) {
@@ -34,7 +34,7 @@ async function createPost(payload) {
 
 async function updatePost(id, payload) {
     try {
-        const { data } = await axios.put(`${urlBase}/${id}`, payload)
+        const { data } = await axios.put(`${urlPost}/${id}`, payload)
         console.log(data)
         return data;
     }
@@ -46,7 +46,7 @@ async function updatePost(id, payload) {
 
 async function deletePost(id) {
     try {
-        const { status } = await axios.delete(`${urlBase}/${id}`)
+        const { status } = await axios.del(`${urlPost}/${id}`)
         return status;
     }
     catch (err) {
